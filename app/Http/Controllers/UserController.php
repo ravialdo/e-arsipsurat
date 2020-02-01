@@ -124,7 +124,7 @@ class UserController extends Controller
 		
 		if($request->password != null):
 			User::find($id)->update([
-				'password' => $request->password
+				'password' => Hash::make($request->password)
 			]);
 		endif;
 		

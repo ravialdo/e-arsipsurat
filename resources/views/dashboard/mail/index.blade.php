@@ -147,6 +147,9 @@
                                     </tbody>
                                 </table>
                             </div>
+					   @if(count($mails) == 0)
+				  			<div class="text-center"> Tidak ada data!</div>
+					   @endif
 				</div>
 			</div>
 		</div>

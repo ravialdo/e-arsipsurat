@@ -14,4 +14,7 @@ class Mail extends Model
 	{
 		return $this->belongsTo(MailType::class);
 	}
+	public function disposition(){
+		return $this->hasOne(Disposition::class);
+	}
 }

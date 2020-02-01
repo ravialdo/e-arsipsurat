@@ -32,7 +32,7 @@
 										
 									<div class="input-group mb-3">
 										<div class="input-group-prepend">
-											<label class="input-group-text" for="inputGroupSelect01">
+											<label class="input-group-text">
 												Level
 											</label>
 										</div>
@@ -135,8 +135,8 @@
 					@endif
 					<!-- End Pagination -->
 					
-					   @if(empty($users))
-					   	 	<div class="text-center">Tidak ada data</div>
+					   @if(count($users) == 0)
+					   	 	<div class="text-center">Tidak ada data!</div>
 					   @endif
 				</div>
 			</div>

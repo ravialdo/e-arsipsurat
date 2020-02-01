@@ -17,7 +17,8 @@ class CreateDispositionsTable extends Migration
             $table->bigIncrements('id');
 		  $table->bigInteger('disposition_to')->unsigned();
 		  $table->foreign('disposition_to')->references('id')->on('users');
-            $table->string('type_mail_disposition',20);
+            $table->bigInteger('type_mail_disposition')->unsigned();
+		  $table->foreign('type_mail_disposition')->references('id')->on('mail_types');
 		  $table->string('description',255);
 		  $table->string('status_disposition',20);
 		  $table->string('status',20);
