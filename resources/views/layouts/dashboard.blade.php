@@ -145,8 +145,8 @@
                         <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{ url('dashboard') }}" aria-expanded="false"><i class="mdi mdi-view-dashboard"></i><span class="hide-menu">Dashboard</span></a></li>
 					@if(auth()->user()->level_id == 1)
                         		<li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{ url('dashboard/user') }}" aria-expanded="false"><i class="mdi mdi-account-network"></i><span class="hide-menu">Data Pengguna</span></a></li>
-                        		<li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{ url('dashboard/mail') }}" aria-expanded="false"><i class="mdi mdi-border-all"></i><span class="hide-menu">DataSurat</span></a></li>
-                        		<li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="icon-material.html" aria-expanded="false"><i class="mdi mdi-face"></i><span class="hide-menu">Data Disposisi</span></a></li>
+                        		<li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{ url('dashboard/mail') }}" aria-expanded="false"><i class="mdi mdi-border-all"></i><span class="hide-menu">Data Surat</span></a></li>
+                        		<li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{ url('dashboard/disposition') }}" aria-expanded="false"><i class="mdi mdi-face"></i><span class="hide-menu">Data Disposisi</span></a></li>
                         		<li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="starter-kit.html" aria-expanded="false"><i class="mdi mdi-file"></i><span class="hide-menu">Buat Surat</span></a></li>
 				    @else
 						<li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="table-basic.html" aria-expanded="false"><i class="mdi mdi-email"></i><span class="hide-menu">Surat Masuk</span></a></li>

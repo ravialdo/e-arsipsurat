@@ -76,7 +76,12 @@ class MailController extends Controller
      */
     public function show($id)
     {
-        //
+        $data = [
+		    'mail' => Mail::find($id),
+			'mail_types' => MailType::all()
+	   ];
+	
+		return view('dashboard.mail.edit', $data);
     }
 
     /**
@@ -103,7 +108,38 @@ class MailController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $update = Mail::find($id);
+
+	   $update->update([
+		   'mail_code' => $request->kode_surat,
+		   'mail_from' => $request->surat_dari,
+		   'mail_to' => $request->surat_untuk,
+		   'mail_subject' => $request->subjek_surat,
+		   'description' => $request->deskripsi,
+		   'mail_type_id' => $request->tipe_surat,
+		]);
+		
+		if($request->file('file') != null):
+			$folder = 'files/';
+			$file = $request->file('file');
+			$file_name = time().'-'.$file->getClientOriginalName();
+			$file->move($folder, $file_name);
+			$file_delete = $folder. $update->file;
+			File::delete($file_delete);
+			
+			$update->update([
+				'file' => $file_name
+			]);
+		endif;
+		
+		if($update):
+			alert()->success('Surat Berhasil di Edit', 'Berhasil!')->persistent('OK');
+	    else:
+			alert()->error('Surat Gagal di Edit', 'Gagal!')->persistent('OK');
+	    endif;
+	
+	    return back();
+		
     }
 
     /**
@@ -119,7 +155,6 @@ class MailController extends Controller
 	  if($destroy):
 			$file = 'files/'. $destroy->file;
 				
-	    		$folder = 'files';
 	   		File::delete($file);
 	
 			$destroy->delete();
@@ -130,4 +165,13 @@ class MailController extends Controller
 		
 		return back();
     }
+
+	public function download($id){
+		
+		$file = Mail::find($id)->file;
+		$file_target = 'files/'. $file;
+		
+		return response()->download($file_target);
+	}
+	
 }

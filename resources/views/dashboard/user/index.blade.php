@@ -30,15 +30,20 @@
 										
 										@csrf
 										
-									<div class="form-group">
-										<label>Level</label>
-										<select name="level" class="custom-select" required>
-											<option value="">Silahkan Pilih</option>
+									<div class="input-group mb-3">
+										<div class="input-group-prepend">
+											<label class="input-group-text" for="inputGroupSelect01">
+												Level
+											</label>
+										</div>
+										<select name="level" class="custom-select">
+											<option>Silahkan Pilih</option>
 												@foreach($levels as $level)
 													<option value="{{ $level->id }}">{{ $level->level_name }}</option>
 												@endforeach
-											</select>
-										</div>
+										</select>
+									</div>
+										
 										<div class="form-group">
 											<label>Nama</label>
 											<input type="text" name="nama" class="form-control" required>

@@ -26,6 +26,7 @@
                                 <h6>{{ $user->email }}</h6> <small class="text-muted p-t-30 db">Nomor Telepon</small>
                                 <h6>{{ $user->profile->number_phone != NULL ? $user->profile->number_phone : '-' }}</h6> <small class="text-muted p-t-30 db">Alamat</small>
                                 <h6>{{ $user->profile->address != NULL ?  $user->profile->address : '-' }}</h6>
+						@if($user->profile->address != NULL)
                                 <div class="map-box">
 							<div class="mapouter">
 								<div class="gmap_canvas">
@@ -47,6 +48,7 @@
 									</style>
 								</div>
                                 </div>
+						@endif
                             </div>
                         </div>
                     </div>
@@ -98,9 +100,19 @@
                                 </form>
                             </div>
                         </div>
+				
                     </div>
                     <!-- Column -->
+			
                 </div>
-                <!-- Row -->
+                <!-- Row -->	
+
+			<div class="row">
+				<div class="col-md-12">
+					<a href="{{ url('dashboard') }}/{{ auth()->user()->level_id == 1 ? 'user' : '' }}" class="btn btn-primary btn-rounded">
+						<i class="mdi mdi-chevron-left"></i> Kembali
+					</a>
+				</div>		
+			</div>
 
 @endsection

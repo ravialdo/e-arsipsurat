@@ -33,7 +33,7 @@ class UserController extends Controller
     {
         $data = [
 			'users' => User::paginate(10),
-			'levels' => Level::all(),		
+			'levels' => Level::all(),
 		];
 		
          return view('dashboard.user.index', $data);
@@ -110,30 +110,29 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        if($request->password != ''):
-			$update = User::find($id)->update([
-				'name' => $request->nama,
-				'email' => $request->email,
-				'password' => Hash::make($request->password)
-         		 ]);
-	   else:
-			$update = User::find($id)->update([
-				'name' => $request->nama,
-				'email' => $request->email,
-        		 ]);
-	   endif;
-	   $user = User::find($id);
-	
-	    if($user->profile()->find($id) == TRUE):
-		
-			 $user->profile()->update([
-				'address' => $request->alamat,
-				'number_phone' => $request->nomor_telepon
-	   		]);
+        $update = User::find($id);
 
+		$update->update([
+			'name' => $request->nama,
+			'email' => $request->email,
+		]);
+		
+		$update->profile()->update([
+			'number_phone' => $request->nomor_telepon,
+			'address' => $request->alamat	
+		]);
+		
+		if($request->password != null):
+			User::find($id)->update([
+				'password' => $request->password
+			]);
 		endif;
-	
-	  alert()->success('Data Berhasil di Simpan', 'Berhasil!')->persistent('OK');
+		
+		if($update):
+			alert()->success('Data Berhasil di Simpan', 'Berhasil!')->persistent('OK');
+		else:
+			alert()->eeror('Terjadi kesalahan saat Menyimpan Data', 'ERROR!')->persistent('OK');
+		endif;
 	
 		return back();
     }
@@ -157,7 +156,7 @@ class UserController extends Controller
     public function dashboard(){
 
 		$data = [
-			'profile' => Profile::find(auth()->user()->id)
+			'user' => User::find(auth()->user()->id)
 		];
 		
 		return view('dashboard.index', $data);

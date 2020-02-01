@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Disposition;
+use  App\Mail;
 
 class DispositionController extends Controller
 {
@@ -13,7 +15,12 @@ class DispositionController extends Controller
      */
     public function index()
     {
-        //
+	   $data = [
+	        'dispositions' => Disposition::all(),
+		   'mails' => Mail::all()
+        ];
+	
+        return view('dashboard.disposition.index', $data);
     }
 
     /**

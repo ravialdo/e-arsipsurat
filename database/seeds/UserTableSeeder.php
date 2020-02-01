@@ -4,6 +4,7 @@ use Illuminate\Database\Seeder;
 
 use Illuminate\Support\Facades\Hash;
 use App\User;
+use App\Profile;
 
 class UserTableSeeder extends Seeder
 {
@@ -33,6 +34,18 @@ class UserTableSeeder extends Seeder
 			'email' => 'user@extreme.com',
 			'level_id' => 2,
 			'password' => Hash::make('user')
+	   ]);
+	
+	   Profile::create([
+			'user_id' => 1
+	   ]);
+	
+	  Profile::create([
+			'user_id' => 2
+	   ]);
+
+	  Profile::create([
+			'user_id' => 3
 	   ]);
     }
 }

@@ -37,7 +37,7 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    /**
+   /**
     * Belongs To User > Level
     *
     * @return void
@@ -47,6 +47,11 @@ class User extends Authenticatable
 		return $this->belongsTo(Level::class);
 	}
 	
+	/**
+	* One To One User > Profile
+	*
+	* @return void
+	*/
 	public function profile()
 	{
 		return $this->hasOne(Profile::class);

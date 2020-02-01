@@ -6,7 +6,7 @@
 
 @section('content')
 
-@if($profile->number_phone == NULL || $profile->address == NULL)
+@if($user->profile->number_phone == null || $user->profile->address == null)
 		<div class="alert alert-warning">
 			{{ __('Data diri anda belum lengkap,') }} <a href="{{ url('dashboard/user', auth()->user()->id) }}">lengkapi disini..</a>
 		</div>

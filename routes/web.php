@@ -19,6 +19,8 @@ Route::get('/', function(){
 
 Route::resource('/dashboard/user', 'UserController');
 Route::resource('/dashboard/mail', 'MailController');
+Route::get('/dashboard/mail/view/{id}', 'MailController@download');
+Route::resource('/dashboard/disposition', 'DispositionController');
 
 Auth::routes();
 
